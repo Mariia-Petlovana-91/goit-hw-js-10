@@ -4,18 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "sass": "sass src/css/main.scss src/css/style.css --no-source-map --style=compressed",
     "dev": "vite",
-    "build": "vite build --base=/vanilla-app-template/",
+    "build": "vite build --base=/goit-hw-js-10/",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^4.5.2",
-    "glob": "^8.1.0"
+    "glob": "^8.1.0",
+    "vite": "^4.5.2"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "sass": "^1.77.8",
     "vite-plugin-full-reload": "^1.0.5",
-    "vite-plugin-html-inject": "^1.0.1"
+    "vite-plugin-html-inject": "^1.0.1",
+    "vite-plugin-sass-dts": "^1.3.25"
   }
 }

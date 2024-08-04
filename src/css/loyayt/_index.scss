@@ -1,0 +1,29 @@
+.hero__list{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	height: 56px;
+	background-color: rgba(255, 180, 230, 0.548);
+	margin-bottom: 24px;
+    }
+    
+.hero__item{
+	font-size: 32px;
+	color: rgb(230, 47, 153);
+    }
+    
+.hero__item a:hover,
+.hero__item a:focus{
+	color: rgb(155, 20, 126);
+    }
+    
+section a{
+	font-size: 24px;
+	font-weight: 500;
+	color: rgba(70, 67, 67, 0.774);
+
+	&:hover{
+		color: rgb(218, 128, 188);
+	}
+    }
+    

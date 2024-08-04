@@ -1,0 +1,29 @@
+.timer, .container{
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+	padding-top: 20px;
+	
+}
+
+input{
+	margin-right: 8px;
+	width: 100%;
+}
+
+
+span{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.value{
+	font-size: 48px;
+	font-weight: 500;
+}
+
+.label{
+	font-size: 16px;
+}
