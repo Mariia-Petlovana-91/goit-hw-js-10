@@ -2,35 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <title>Snackbar</title>
-    <script type="module" crossorigin src="/goit-hw-js-10/assets/style-06548a0a.js"></script>
-    <link rel="stylesheet" href="/goit-hw-js-10/assets/style-8391758b.css">
+    
+    <script type="module" crossorigin src="/goit-hw-js-10/2-snackbar-d9dd38d8.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-hw-js-10/iziToast.min-98ae614a.js">
+    <link rel="stylesheet" href="/goit-hw-js-10/iziToast-e5212ee8.css">
+    <link rel="stylesheet" href="/goit-hw-js-10/style-706c92d5.css">
   </head>
   <body>
     <section>
       <a href="./index.html">Go to home</a>
       <form class="form">
-        <label>
+        <label class="">
           Delay (ms)
-          <input type="number" name="delay" required />
+          <input class="form__input" type="number" name="delay" required />
         </label>
       
-        <fieldset>
+        <fieldset class="form__inputContainer">
           <legend>State</legend>
-          <label>
-            <input type="radio" name="state" value="fulfilled" required />
+          <label class="form__label">
+            <input class="form__input--radio" type="radio" name="state" value="fulfilled" required />
             Fulfilled
           </label>
-          <label>
-            <input type="radio" name="state" value="rejected" required />
+          <label class="form__label">
+            <input class="form__input--radio" type="radio" name="state" value="rejected" required />
             Rejected
           </label>
         </fieldset>
       
-        <button type="submit">Create notification</button>
+        <button class="form__btn" type="submit">Create notification</button>
       </form>
     </section>
     
