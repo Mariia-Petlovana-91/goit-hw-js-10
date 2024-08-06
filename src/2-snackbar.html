@@ -2,33 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
     <title>Snackbar</title>
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <section>
       <a href="./index.html">Go to home</a>
       <form class="form">
-        <label>
+        <label class="">
           Delay (ms)
-          <input type="number" name="delay" required />
+          <input class="form__input" type="number" name="delay" required />
         </label>
       
-        <fieldset>
+        <fieldset class="form__inputContainer">
           <legend>State</legend>
-          <label>
-            <input type="radio" name="state" value="fulfilled" required />
+          <label class="form__label">
+            <input class="form__input--radio" type="radio" name="state" value="fulfilled" required />
             Fulfilled
           </label>
-          <label>
-            <input type="radio" name="state" value="rejected" required />
+          <label class="form__label">
+            <input class="form__input--radio" type="radio" name="state" value="rejected" required />
             Rejected
           </label>
         </fieldset>
       
-        <button type="submit">Create notification</button>
+        <button class="form__btn" type="submit">Create notification</button>
       </form>
     </section>
     <script src="./js/2-snackbar.js" type="module"></script>

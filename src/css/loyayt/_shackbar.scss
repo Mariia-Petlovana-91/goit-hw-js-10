@@ -1,0 +1,49 @@
+.form {
+	max-width: 300px;
+	padding: 8px; 
+    }
+    
+    .form input {
+	height: 32px;
+	width: 100%;
+	box-sizing: border-box;
+    }
+    
+    .form__label {
+	display: flex;
+	align-items: center;
+	margin-left: 16px;
+    }
+    
+    .form__label--delay {
+	flex-direction: column;
+    }
+    
+    .form__input--radio {
+	width: fit-content;
+    }
+    
+    .form__inputContainer {
+	display: flex;
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 8px;
+    }
+    
+    legend {
+	margin-left: 16px;
+    }
+    
+    .form__btn {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+    }
+
+
+    .iziToast {
+      width: 300px !important;
+      border-radius: 8px !important;
+      padding: 15px !important;
+      box-sizing: border-box !important;
+  }
