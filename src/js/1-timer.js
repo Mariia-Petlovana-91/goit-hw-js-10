@@ -7,9 +7,14 @@ import "izitoast/dist/css/iziToast.min.css";
 const refs = {
 	dataTimePicker: document.getElementById('datetime-picker'),
 	btnStart: document.querySelector('[data-start]'),
+	days: document.querySelector('[data-days]'),
+	hours: document.querySelector('[data-hours]'),
+	minutes: document.querySelector('[data-minutes]'),
+	seconds: document.querySelector('[data-seconds]'),
+
 } 
 
-let userSelectedDate;
+let userSelectedDate ;
 
 const options = {
 	enableTime: true,
@@ -17,7 +22,7 @@ const options = {
 	defaultDate: new Date(),
 	minuteIncrement: 1,
 	onClose(selectedDates) {
-		if(selectedDates[0] <= options.defaultDate){
+		if (selectedDates[0] <= this.defaultDate) {
 			iziToast.show({
 				backgroundColor: 'red',
 				messageColor: 'white',
@@ -28,15 +33,39 @@ const options = {
 			refs.btnStart.setAttribute('disabled', 'true');
 		} else {
 			refs.btnStart.removeAttribute('disabled');
-			userSelectedDate = selectedDates[0].getTime() - options.defaultDate.getTime();
-			console.log(convertMs(userSelectedDate));
+			userSelectedDate = selectedDates[0].getTime();
 		}
 	},
+
+	selectedDate() {
+		const intervalId = setInterval(() => {
+			const currentTime = Date.now();
+			const selectedTime = userSelectedDate - currentTime;
+			refs.btnStart.setAttribute('disabled', 'true');
+			refs.dataTimePicker.setAttribute('disabled', 'true');
+
+			if (selectedTime <= 0) {
+				clearInterval(intervalId);
+				refs.dataTimePicker.removeAttribute('disabled');
+				return;
+			}
+
+			const dataSelectedTimeObject = convertMs(selectedTime);
+
+			refs.days.textContent = String(dataSelectedTimeObject.days).padStart(2, '0');
+			refs.hours.textContent = String(dataSelectedTimeObject.hours).padStart(2, '0');
+			refs.minutes.textContent = String(dataSelectedTimeObject.minutes).padStart(2, '0');
+			refs.seconds.textContent = String(dataSelectedTimeObject.seconds).padStart(2, '0');
+		}, 1000);
+	}
 };
 
+flatpickr(refs.dataTimePicker, {
+	...options,
+	onClose: options.onClose.bind(options),
+});
 
-
-flatpickr(refs.dataTimePicker, options);
+refs.btnStart.addEventListener('click', options.selectedDate.bind(options));
 
 function convertMs(ms) {
 	// Number of milliseconds per unit of time
@@ -56,7 +85,3 @@ function convertMs(ms) {
     
 	return { days, hours, minutes, seconds };
     }
-
-function addLeadingZero(value){
-	return value.padStart(2, '0');
-}
