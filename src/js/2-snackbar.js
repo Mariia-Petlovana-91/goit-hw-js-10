@@ -21,6 +21,8 @@ refs.statusRatio.addEventListener('change', (e) => {
 function createPromise(e) {
   e.preventDefault();
 
+  
+
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (inputChoice === 'fulfilled') {
@@ -49,11 +51,7 @@ function createPromise(e) {
         position: 'topRight',
         close: false,
       });
-    })
-    .finally(() => {
-	refs.form.reset();
-      inputDelay = null;
-      inputChoice = null;
     });
+  refs.form.reset();
 }
     
