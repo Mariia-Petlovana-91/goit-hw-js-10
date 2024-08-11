@@ -22,7 +22,7 @@ const options = {
 	defaultDate: new Date(),
 	minuteIncrement: 1,
 	onClose(selectedDates) {
-		if (selectedDates[0] <= this.defaultDate) {
+		if (selectedDates[0] <= options.defaultDate) {
 			iziToast.show({
 				backgroundColor: 'red',
 				messageColor: 'white',
@@ -35,37 +35,34 @@ const options = {
 			refs.btnStart.removeAttribute('disabled');
 			userSelectedDate = selectedDates[0].getTime();
 		}
-	},
-
-	selectedDate() {
-		const intervalId = setInterval(() => {
-			const currentTime = Date.now();
-			const selectedTime = userSelectedDate - currentTime;
-			refs.btnStart.setAttribute('disabled', 'true');
-			refs.dataTimePicker.setAttribute('disabled', 'true');
-
-			if (selectedTime <= 0) {
-				clearInterval(intervalId);
-				refs.dataTimePicker.removeAttribute('disabled');
-				return;
-			}
-
-			const dataSelectedTimeObject = convertMs(selectedTime);
-
-			refs.days.textContent = String(dataSelectedTimeObject.days).padStart(2, '0');
-			refs.hours.textContent = String(dataSelectedTimeObject.hours).padStart(2, '0');
-			refs.minutes.textContent = String(dataSelectedTimeObject.minutes).padStart(2, '0');
-			refs.seconds.textContent = String(dataSelectedTimeObject.seconds).padStart(2, '0');
-		}, 1000);
 	}
 };
 
-flatpickr(refs.dataTimePicker, {
-	...options,
-	onClose: options.onClose.bind(options),
-});
+function selectedDate() {
+	const intervalId = setInterval(() => {
+		const currentTime = Date.now();
+		const selectedTime = userSelectedDate - currentTime;
+		refs.btnStart.setAttribute('disabled', 'true');
+		refs.dataTimePicker.setAttribute('disabled', 'true');
 
-refs.btnStart.addEventListener('click', options.selectedDate.bind(options));
+		if (selectedTime <= 0) {
+			clearInterval(intervalId);
+			refs.dataTimePicker.removeAttribute('disabled');
+			return;
+		}
+
+		const dataSelectedTimeObject = convertMs(selectedTime);
+
+		refs.days.textContent = String(dataSelectedTimeObject.days).padStart(2, '0');
+		refs.hours.textContent = String(dataSelectedTimeObject.hours).padStart(2, '0');
+		refs.minutes.textContent = String(dataSelectedTimeObject.minutes).padStart(2, '0');
+		refs.seconds.textContent = String(dataSelectedTimeObject.seconds).padStart(2, '0');
+	}, 1000);
+}
+
+flatpickr(refs.dataTimePicker, options);
+
+refs.btnStart.addEventListener('click', selectedDate);
 
 function convertMs(ms) {
 	// Number of milliseconds per unit of time
